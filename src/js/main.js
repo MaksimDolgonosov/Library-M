@@ -1,2 +1,3 @@
 import "./lib/core";
-$(".active").hide().show();
+// $(".active").hide().show();
+console.log($(".active"));

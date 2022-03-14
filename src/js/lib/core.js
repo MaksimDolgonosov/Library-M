@@ -22,17 +22,32 @@
 //     window.$ = $;
 // })();
 
-const person = {
-    name: "Max",
-    age: 31,
-    sex: "famele",
-    say: function(){
-        console.log("hello");
+// const $ = function(selector){
+//     return new $.prototype.init(selector);
+// };
+
+// $.prototype.init = function(selector){
+// if (!selector){
+//     return this;
+// }else{
+//     Object.assign(this, document.querySelectorAll(selector));
+//     this.length = document.querySelectorAll(selector).length;
+//     return this;
+// }
+// };
+
+const $ = function (selector) {
+    return new $.prototype.init(selector);
+};
+
+$.prototype.init = function (selector) {
+    if (!selector) {
+        return this; // {} пустой объект
+    } else {
+        Object.assign(this, document.querySelectorAll(selector));
+        Object.assign(this, document.querySelectorAll(selector).length);
+        return this;
     }
 };
 
-
-let person2 = new person.prototype.say();
-
-//console.log(new person.prototype);
-
+window.$ = $;
