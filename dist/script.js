@@ -135,12 +135,22 @@ $.prototype.init = function (selector) {
     return this; // {} пустой объект
   } else {
     Object.assign(this, document.querySelectorAll(selector));
-    Object.assign(this, document.querySelectorAll(selector).length);
     return this;
   }
 };
 
+$.prototype.init.prototype = $.prototype;
 window.$ = $;
+console.log($(".active"));
+
+function P(a, b, c) {
+  this.a = a, this.b = b, this.c = function init() {
+    console.log(c);
+  };
+}
+
+const person = new P("sdgf", "asf", 1);
+person.c();
 
 /***/ }),
 
@@ -156,8 +166,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _lib_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./lib/core */ "./src/js/lib/core.js");
 /* harmony import */ var _lib_core__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_lib_core__WEBPACK_IMPORTED_MODULE_0__);
  // $(".active").hide().show();
-
-console.log($(".active"));
+//console.log($(".active"));
 
 /***/ })
 
