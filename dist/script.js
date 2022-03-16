@@ -90,9 +90,11 @@
 /*!****************************!*\
   !*** ./src/js/lib/core.js ***!
   \****************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
+"use strict";
+__webpack_require__.r(__webpack_exports__);
 // (() => {
 //     const $ = function (selector) {
 //         const elements = document.querySelectorAll(selector);
@@ -126,31 +128,115 @@
 //     return this;
 // }
 // };
+// const $ = function (selector) {
+//     return new init(selector);
+// };
+// function init(selector) {
+//     if (!selector) {
+//         return this; // {} пустой объект
+//     } else {
+//         Object.assign(this, document.querySelectorAll(selector));
+//         this.length = document.querySelectorAll(selector).length;
+//         return this;
+//     }
+// }
+// init.prototype = $.prototype;
+// window.$ = $;
 const $ = function (selector) {
-  return new $.prototype.init(selector);
+  return new init(selector);
 };
 
-$.prototype.init = function (selector) {
+function init(selector) {
   if (!selector) {
-    return this; // {} пустой объект
-  } else {
-    Object.assign(this, document.querySelectorAll(selector));
-    return this;
+    return this; // {}
   }
-};
 
-$.prototype.init.prototype = $.prototype;
-window.$ = $;
-console.log($(".active"));
-
-function P(a, b, c) {
-  this.a = a, this.b = b, this.c = function init() {
-    console.log(c);
-  };
+  Object.assign(this, document.querySelectorAll(selector));
+  this.length = document.querySelectorAll(selector).length;
+  return this;
 }
 
-const person = new P("sdgf", "asf", 1);
-person.c();
+;
+init.prototype = $.prototype;
+window.$ = $;
+/* harmony default export */ __webpack_exports__["default"] = ($);
+
+/***/ }),
+
+/***/ "./src/js/lib/lib.js":
+/*!***************************!*\
+  !*** ./src/js/lib/lib.js ***!
+  \***************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./core */ "./src/js/lib/core.js");
+/* harmony import */ var _modules_display__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/display */ "./src/js/lib/modules/display.js");
+
+
+
+function Animal(name, age) {
+  this.name = name;
+  this.age = age; // this.say = function () {
+  //     console.log("Hello");
+  // }
+}
+
+Animal.prototype.say = function () {
+  console.log("Hello");
+};
+
+console.log(Animal.prototype);
+
+function Cat(name, age, hasTail) {
+  this.tail = hasTail;
+}
+
+let Myrzik = new Cat("Murzik", 3, true);
+Myrzik.prototype = Animal.prototype;
+Myrzik.prototype.say();
+console.log(Myrzik);
+/* harmony default export */ __webpack_exports__["default"] = (_core__WEBPACK_IMPORTED_MODULE_0__["default"]);
+
+/***/ }),
+
+/***/ "./src/js/lib/modules/display.js":
+/*!***************************************!*\
+  !*** ./src/js/lib/modules/display.js ***!
+  \***************************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../core */ "./src/js/lib/core.js");
+
+
+_core__WEBPACK_IMPORTED_MODULE_0__["default"].prototype.show = function () {
+  for (let i = 0; i < this.length; i++) {
+    if (!this[i].style) {
+      continue;
+    }
+
+    this[i].style.display = "";
+  }
+
+  return this;
+};
+
+_core__WEBPACK_IMPORTED_MODULE_0__["default"].prototype.hide = function () {
+  for (let i = 0; i < this.length; i++) {
+    if (!this[i].style) {
+      continue;
+    }
+
+    this[i].style.display = "none";
+  }
+
+  return this;
+};
 
 /***/ }),
 
@@ -163,10 +249,9 @@ person.c();
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _lib_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./lib/core */ "./src/js/lib/core.js");
-/* harmony import */ var _lib_core__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_lib_core__WEBPACK_IMPORTED_MODULE_0__);
- // $(".active").hide().show();
-//console.log($(".active"));
+/* harmony import */ var _lib_lib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./lib/lib */ "./src/js/lib/lib.js");
+
+$("div").show().hide();
 
 /***/ })
 

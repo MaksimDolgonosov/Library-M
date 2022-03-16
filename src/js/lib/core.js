@@ -36,30 +36,45 @@
 // }
 // };
 
+// const $ = function (selector) {
+//     return new init(selector);
+// };
+
+
+// function init(selector) {
+//     if (!selector) {
+//         return this; // {} пустой объект
+//     } else {
+//         Object.assign(this, document.querySelectorAll(selector));
+//         this.length = document.querySelectorAll(selector).length;
+//         return this;
+//     }
+// }
+
+
+// init.prototype = $.prototype;
+
+// window.$ = $;
+
 const $ = function (selector) {
-    return new $.prototype.init(selector);
+    return new init(selector);
 };
 
-$.prototype.init = function (selector) {
+ function init (selector) {
     if (!selector) {
-        return this; // {} пустой объект
-    } else {
-        Object.assign(this, document.querySelectorAll(selector));
-
-        return this;
+        return this; // {}
     }
+    Object.assign(this, document.querySelectorAll(selector));
+    this.length = document.querySelectorAll(selector).length;
+    return this;
 };
-$.prototype.init.prototype = $.prototype;
-window.$ = $;
-console.log($(".active"));
 
-function P(a,b,c){
-    this.a =a,
-    this.b=b,
-    this.c = function init (){
-        console.log(c);
-    }
-}
-const person = new P("sdgf", "asf", 1);
-person.c();
+init.prototype = $.prototype;
+
+window.$ = $;
+
+export default $;
+
+
+
 
