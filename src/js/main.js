@@ -1,3 +1,3 @@
 import "./lib/lib";
 
-$("div").show().hide();
+$(".active").click();

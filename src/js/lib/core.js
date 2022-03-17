@@ -69,6 +69,7 @@ const $ = function (selector) {
     return this;
 };
 
+
 init.prototype = $.prototype;
 
 window.$ = $;
