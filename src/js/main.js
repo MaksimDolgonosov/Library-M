@@ -1,3 +1,10 @@
 import "./lib/lib";
 
-$(".active").click();
+$("button").on("click", function(){
+    $(this).classToggle("active");
+});
+
+
+// function sayHello(){
+//     console.log("Hello");
+// }

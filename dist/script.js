@@ -151,6 +151,12 @@ function init(selector) {
     return this; // {}
   }
 
+  if (selector.tagName) {
+    this[0] = selector;
+    this.length = 1;
+    return this;
+  }
+
   Object.assign(this, document.querySelectorAll(selector));
   this.length = document.querySelectorAll(selector).length;
   return this;
@@ -341,7 +347,11 @@ _core__WEBPACK_IMPORTED_MODULE_0__["default"].prototype.toggle = function () {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _lib_lib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./lib/lib */ "./src/js/lib/lib.js");
 
-$(".active").click();
+$("button").on("click", function () {
+  $(this).classToggle("active");
+}); // function sayHello(){
+//     console.log("Hello");
+// }
 
 /***/ })
 
