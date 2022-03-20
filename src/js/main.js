@@ -1,10 +1,10 @@
 import "./lib/lib";
 
 $("button").on("click", function () {
-    $(this).classToggle("active");
+    $("div").eq(2).classToggle("active");
 });
 
 
 $(".active").setAtr("data-active", true);
 $(".active").getAtr("data-active");
-$("button").html();
+$("div").eq(1).setAtr("data-born", 1990);

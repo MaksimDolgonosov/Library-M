@@ -10,3 +10,17 @@ $.prototype.html = function (content) {
     }
     return this;
 };
+
+
+$.prototype.eq = function (i) {
+    let swap = this[i];
+    let swapLength = Array.from(this).length;
+    for (let i = 0; i < swapLength; i++) {
+        delete this[i];
+    }
+    this[0]=swap;
+    this.length=1;
+    return this;
+
+
+};

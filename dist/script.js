@@ -218,6 +218,19 @@ _core__WEBPACK_IMPORTED_MODULE_0__["default"].prototype.html = function (content
   return this;
 };
 
+_core__WEBPACK_IMPORTED_MODULE_0__["default"].prototype.eq = function (i) {
+  let swap = this[i];
+  let swapLength = Array.from(this).length;
+
+  for (let i = 0; i < swapLength; i++) {
+    delete this[i];
+  }
+
+  this[0] = swap;
+  this.length = 1;
+  return this;
+};
+
 /***/ }),
 
 /***/ "./src/js/lib/modules/attributes.js":
@@ -411,11 +424,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _lib_lib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./lib/lib */ "./src/js/lib/lib.js");
 
 $("button").on("click", function () {
-  $(this).classToggle("active");
+  $("div").eq(2).classToggle("active");
 });
 $(".active").setAtr("data-active", true);
 $(".active").getAtr("data-active");
-$("button").html();
+$("div").eq(1).setAtr("data-born", 1990);
 
 /***/ })
 
