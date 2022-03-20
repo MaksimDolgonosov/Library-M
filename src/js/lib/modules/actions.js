@@ -1,35 +1,12 @@
 import $ from "../core";
 
-
-$.prototype.on = function (eventName, callback) {
-    if (!eventName || !callback) {
-        return this;
-    }
-
+$.prototype.html = function (content) {
     for (let i = 0; i < this.length; i++) {
-        this[i].addEventListener(eventName, callback);
-    }
-    return this;
-};
-
-$.prototype.off = function (eventName, callback) {
-    if (!eventName || !callback) {
-        return this;
-    }
-
-    for (let i = 0; i < this.length; i++) {
-        this[i].removeEventListener(eventName, callback);
-    }
-    return this;
-};
-
-$.prototype.click = function (callback) {
-    for (let i = 0; i < this.length; i++) {
-        if (callback) {
-            this[i].addEventListener("click", callback);
+        if (content) {
+            this[i].innerHTML = content;
         } else {
-            this[i].click();
+            return this[i].innerHTML;
         }
-        return this;
     }
+    return this;
 };

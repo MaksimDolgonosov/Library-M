@@ -1,10 +1,10 @@
 import "./lib/lib";
 
-$("button").on("click", function(){
+$("button").on("click", function () {
     $(this).classToggle("active");
 });
 
 
-// function sayHello(){
-//     console.log("Hello");
-// }
+$(".active").setAtr("data-active", true);
+$(".active").getAtr("data-active");
+$("button").html();
