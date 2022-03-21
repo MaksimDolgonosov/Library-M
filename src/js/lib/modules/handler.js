@@ -2,6 +2,7 @@ import $ from "../core";
 
 
 $.prototype.on = function (eventName, callback) {
+
     if (!eventName || !callback) {
         return this;
     }

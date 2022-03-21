@@ -231,6 +231,23 @@ _core__WEBPACK_IMPORTED_MODULE_0__["default"].prototype.eq = function (i) {
   return this;
 };
 
+_core__WEBPACK_IMPORTED_MODULE_0__["default"].prototype.index = function () {
+  let parent = this[0].parentNode;
+  let chlndrn = [...parent.children];
+  return chlndrn.findIndex(item => {
+    return item == this[0];
+  });
+};
+
+_core__WEBPACK_IMPORTED_MODULE_0__["default"].prototype.find = function (selector) {
+  let numberOfItems = 0;
+  const copyObj = Object.assign({}, this);
+
+  for (let i = 0; i < copyObj.length; i++) {
+    let arr = copyObj[i].querySelectorAll(selector);
+  }
+};
+
 /***/ }),
 
 /***/ "./src/js/lib/modules/attributes.js":
@@ -429,6 +446,16 @@ $("button").on("click", function () {
 $(".active").setAtr("data-active", true);
 $(".active").getAtr("data-active");
 $("div").eq(1).setAtr("data-born", 1990);
+$("div").on("click", function () {
+  console.log($(this).index());
+});
+let user = {
+  0: "Max",
+  1: "Dolgonosov",
+  2: 31
+};
+let k = user.querySelectorAll("Max");
+console.log(k);
 
 /***/ })
 
