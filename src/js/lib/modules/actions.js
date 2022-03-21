@@ -35,10 +35,12 @@ $.prototype.index = function () {
 };
 
 $.prototype.find = function (selector) {
-    let numberOfItems = 0;
-
-    const copyObj = Object.assign({}, this);
-    for (let i=0;i<copyObj.length;i++){
-        let arr = copyObj[i].querySelectorAll(selector);
+    const newObj = this[0].querySelectorAll(selector);
+    for (let i = 0; i < this.length; i++) {
+        delete this[i];
     }
-};
+ 
+    Object.assign(this, newObj);
+    this.length = newObj.length;
+    return this;
+}

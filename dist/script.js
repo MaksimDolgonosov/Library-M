@@ -240,12 +240,15 @@ _core__WEBPACK_IMPORTED_MODULE_0__["default"].prototype.index = function () {
 };
 
 _core__WEBPACK_IMPORTED_MODULE_0__["default"].prototype.find = function (selector) {
-  let numberOfItems = 0;
-  const copyObj = Object.assign({}, this);
+  const newObj = this[0].querySelectorAll(selector);
 
-  for (let i = 0; i < copyObj.length; i++) {
-    let arr = copyObj[i].querySelectorAll(selector);
+  for (let i = 0; i < this.length; i++) {
+    delete this[i];
   }
+
+  Object.assign(this, newObj);
+  this.length = newObj.length;
+  return this;
 };
 
 /***/ }),
@@ -449,13 +452,7 @@ $("div").eq(1).setAtr("data-born", 1990);
 $("div").on("click", function () {
   console.log($(this).index());
 });
-let user = {
-  0: "Max",
-  1: "Dolgonosov",
-  2: 31
-};
-let k = user.querySelectorAll("Max");
-console.log(k);
+console.log($("div").eq(2).find(".some"));
 
 /***/ })
 

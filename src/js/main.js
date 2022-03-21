@@ -13,11 +13,5 @@ $("div").on("click", function () {
     console.log($(this).index());
 });
 
-let user = {
-    0: "Max",
-    1: "Dolgonosov",
-    2: 31
-};
+console.log($("div").eq(2).find(".some"));
 
-let k = user.querySelectorAll("Max");
-console.log(k);
